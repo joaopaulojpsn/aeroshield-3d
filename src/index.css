@@ -152,6 +152,27 @@ canvas { display: block; }
   font-variant-numeric: tabular-nums;
 }
 
+/* Créditos no rodapé do painel */
+.creditos {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--borda);
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--texto-suave);
+}
+.creditos p { margin: 0; }
+.creditos .disciplina {
+  color: var(--texto);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.creditos span {
+  display: inline-block;
+  min-width: 74px;
+  opacity: 0.7;
+}
+
 /* Controles */
 .controles {
   grid-column: 1;

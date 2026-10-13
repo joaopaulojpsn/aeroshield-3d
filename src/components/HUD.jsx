@@ -44,6 +44,8 @@ export function HUD({ estado, camera, setCamera, velocidade, setVelocidade, onTo
 
         <h3>Log de operações</h3>
         <Log logs={logs} />
+
+        <Creditos />
       </aside>
 
       {/* Controles */}
@@ -71,6 +73,20 @@ export function HUD({ estado, camera, setCamera, velocidade, setVelocidade, onTo
         </label>
       </footer>
     </div>
+  )
+}
+
+// Créditos do projeto (rodapé do painel lateral)
+function Creditos() {
+  return (
+    <footer className="creditos">
+      <p className="disciplina">
+        MB-251 Complexidade da Inovação · Prof. Lucas Abdala · ITA
+      </p>
+      <p><span>Desenvolvedor</span> João Paulo Nogueira</p>
+      <p><span>Idealizador</span> Major AV Vitor CORRADI</p>
+      <p><span>Equipe</span> Oswaldo Junior · Mario H Trentim</p>
+    </footer>
   )
 }
 

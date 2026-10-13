@@ -1,0 +1,229 @@
+/* Estilos do HUD do AeroShield 3D */
+:root {
+  --fundo-painel: rgba(13, 20, 30, 0.78);
+  --borda: rgba(255, 255, 255, 0.1);
+  --texto: #e8eef5;
+  --texto-suave: #8fa3b8;
+  --azul: #2196f3;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--texto);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #9cc9ec;
+}
+
+canvas { display: block; }
+
+.hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+  padding: 12px;
+}
+
+.painel {
+  pointer-events: auto;
+  background: var(--fundo-painel);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+}
+
+/* Barra superior */
+.barra-status {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 16px;
+}
+.marca { font-size: 15px; white-space: nowrap; }
+.marca strong { color: #64b5f6; }
+.marca span { color: var(--texto-suave); font-size: 12px; margin-left: 6px; }
+
+.status {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--cor);
+  letter-spacing: 0.02em;
+}
+.status .ponto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cor);
+  box-shadow: 0 0 10px var(--cor);
+  animation: pulso 1.2s infinite;
+}
+@keyframes pulso { 50% { opacity: 0.35; } }
+
+.semaforo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #111;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.luz { width: 14px; height: 14px; border-radius: 50%; }
+.luz.vermelha { background: #ff1744; box-shadow: 0 0 10px #ff1744; }
+.luz.verde { background: #1b3d22; }
+.semaforo.livre .luz.vermelha { background: #3d1515; box-shadow: none; }
+.semaforo.livre .luz.verde { background: #00e676; box-shadow: 0 0 10px #00e676; }
+
+/* Painel lateral */
+.lateral {
+  grid-column: 2;
+  grid-row: 2 / 4;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.lateral h3 {
+  margin: 16px 0 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--texto-suave);
+}
+
+.metricas { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.metrica {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+.metrica span { display: block; font-size: 11px; color: var(--texto-suave); }
+.metrica strong { font-size: 18px; font-variant-numeric: tabular-nums; }
+
+.osciloscopio {
+  width: 100%;
+  height: 80px;
+  background: #050a0f;
+  border-radius: 6px;
+  border: 1px solid var(--borda);
+}
+.osciloscopio .grade { stroke: rgba(100, 181, 246, 0.12); stroke-width: 1; }
+.osciloscopio .sinal {
+  fill: none;
+  stroke: #4fc3f7;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 3px #4fc3f7);
+}
+
+.log {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.log li {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.log time {
+  display: block;
+  font-size: 10px;
+  color: var(--texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Controles */
+.controles {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: end;
+  justify-self: start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
+.btn {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.16); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn.primario { background: var(--azul); border-color: var(--azul); color: #fff; }
+.btn.primario:hover { background: #1e88e5; }
+
+.grupo-camera {
+  display: flex;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  padding: 3px;
+}
+.chip {
+  font: inherit;
+  font-size: 12px;
+  color: var(--texto-suave);
+  background: none;
+  border: 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.chip.ativo { background: rgba(255, 255, 255, 0.14); color: var(--texto); }
+
+.velocidade {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  color: var(--texto-suave);
+  gap: 2px;
+}
+.velocidade input { width: 120px; accent-color: var(--azul); }
+
+/* Rótulo da IA sobre o objeto detectado */
+.rotulo-ia {
+  pointer-events: none;
+  white-space: nowrap;
+  background: #d50000;
+  color: #fff;
+  font: 600 12px/1 system-ui, sans-serif;
+  padding: 4px 7px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.rotulo-ia span { opacity: 0.85; margin-left: 4px; font-weight: 400; }
+
+/* Telas menores */
+@media (max-width: 860px) {
+  .hud { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto auto; }
+  .lateral { grid-column: 1; grid-row: 4; max-height: 32vh; }
+  .controles { grid-row: 3; }
+  .marca span { display: none; }
+}

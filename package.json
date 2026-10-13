@@ -2,6 +2,9 @@
   "name": "aeroshield-3d",
   "private": true,
   "version": "0.0.0",
+  "description": "AeroShield Robotics — simulador 3D de robô de patrulha de pista (MB-251, ITA)",
+  "author": "João Paulo Nogueira",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",

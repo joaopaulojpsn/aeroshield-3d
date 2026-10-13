@@ -6,6 +6,19 @@ liberada pela torre de controle.
 
 Feito com React + Vite + Three.js (@react-three/fiber e @react-three/drei).
 
+**Acesse online:** https://joaopaulojpsn.github.io/aeroshield-3d/
+
+## Créditos
+
+Projeto da disciplina **MB-251 Complexidade da Inovação** — Prof. **Lucas Abdala**,
+Instituto Tecnológico de Aeronáutica (**ITA**).
+
+| Função | Nome |
+|---|---|
+| Desenvolvedor | João Paulo Nogueira |
+| Idealizador do projeto | Major AV Vitor CORRADI |
+| Integrantes do grupo | Oswaldo Junior · Mario H Trentim |
+
 ## Como rodar
 
 Pré-requisito: Node.js 20 ou mais novo (https://nodejs.org).
@@ -61,3 +74,8 @@ ZIGZAG --(fim da pista ou torre fecha)--> RETORNANDO --> DOCKED
 npm run build     # cria a pasta dist/
 npm run preview   # serve a versão final em http://localhost:4173
 ```
+
+## Licença
+
+Código aberto para estudo e reutilização sob a [licença MIT](LICENSE),
+desde que mantidos os créditos do desenvolvedor e do grupo.
